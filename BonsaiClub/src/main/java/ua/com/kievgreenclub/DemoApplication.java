@@ -1,4 +1,4 @@
-package ua.com.kievbosaiclub;
+package ua.com.kievgreenclub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

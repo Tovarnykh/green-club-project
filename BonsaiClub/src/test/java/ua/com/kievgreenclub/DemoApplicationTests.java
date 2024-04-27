@@ -1,4 +1,4 @@
-package ua.com.kievbosaiclub;
+package ua.com.kievgreenclub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
