@@ -1,12 +1,14 @@
 package ua.com.kievgreenclub.Model.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.com.kievgreenclub.Model.Entity.OrderItem;
 import ua.com.kievgreenclub.Model.Repository.OrderItemRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class OrderItemService {
 
     private final OrderItemRepository orderItemRepository;
