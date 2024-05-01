@@ -1,0 +1,46 @@
+.category-icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 89px 20px;
+    background-image: -webkit-linear-gradient(to bottom, #03281e, #04291f);
+    background-image:    -moz-linear-gradient(to bottom, #03281e, #04291f);
+    background-image:      -o-linear-gradient(to bottom, #03281e, #04291f);
+    background-image:         linear-gradient(to bottom, #03281e, #04291f);
+}
+
+.category-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333; /* Dark text color for readability */
+    transition: transform 0.3s ease;
+}
+
+.category-link:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    color: #76b947; /* Change color on hover */
+}
+
+.alocasia-icon img,
+.philodendron-icon img,
+.monstera-icon img,
+.anthurium-icon img,
+.hoya-icon img,
+.syngonium-icon img
+{
+    margin-top: 0px;
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+}
+
+.alocasia-icon img:hover,
+.philodendron-icon img:hover,
+.monstera-icon img:hover,
+.anthurium-icon img:hover,
+.hoya-icon img:hover,
+.syngonium-icon img:hover
+{
+    opacity: 0.8;
+}
