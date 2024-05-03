@@ -1,8 +1,8 @@
 import React from 'react';
 import './CategoryIcons.css';
-import {Link} from "react-router-dom";
-import alocasia  from "./Alocasia.png";
-import philodendron  from "./Philodendron.png";
+import { Link } from "react-router-dom";
+import alocasia from "./Alocasia.png";
+import philodendron from "./Philodendron.png";
 import monstera from "./Monstera.png";
 import anthurium from "./Anthurium.png";
 import hoya from "./Hoya.png";
@@ -11,34 +11,40 @@ import syngonium from "./Syngonium.png";
 function CategoryIcons() {
     return (
         <div className="category-icons">
-            <div className="alocasia-icon">
+            <div className="category-icon">
                 <Link to="/alocasia">
-                    <img src={alocasia} alt="" />
+                    <img src={alocasia} alt="Alocasia" />
+                    <span>Alocasia</span>
                 </Link>
             </div>
-            <div className="philodendron-icon">
+            <div className="category-icon">
                 <Link to="/philodendron">
-                    <img src={philodendron} alt="" />
+                    <img src={philodendron} alt="Philodendron" />
+                    <span>Philodendron</span>
                 </Link>
             </div>
-            <div className="monstera-icon">
+            <div className="category-icon">
                 <Link to="/monstera">
-                    <img src={monstera} alt="" />
+                    <img src={monstera} alt="Monstera" />
+                    <span>Monstera</span>
                 </Link>
             </div>
-            <div className="anthurium-icon">
+            <div className="category-icon">
                 <Link to="/anthurium">
-                    <img src={anthurium} alt="" />
+                    <img src={anthurium} alt="Anthurium" />
+                    <span>Anthurium</span>
                 </Link>
             </div>
-            <div className="hoya-icon">
+            <div className="category-icon">
                 <Link to="/hoya">
-                    <img src={hoya} alt="" />
+                    <img src={hoya} alt="Hoya" />
+                    <span>Hoya</span>
                 </Link>
             </div>
-            <div className="syngonium-icon">
+            <div className="category-icon">
                 <Link to="/syngonium">
-                    <img src={syngonium} alt="" />
+                    <img src={syngonium} alt="Syngonium" />
+                    <span>Syngonium</span>
                 </Link>
             </div>
         </div>

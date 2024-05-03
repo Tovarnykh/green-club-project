@@ -7,17 +7,17 @@
     justify-content: center;
     align-items: center;
     color: white; /* Assuming white text for visibility */
-    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7); /* Optional: Enhances text visibility */
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 4); /* Optional: Enhances text visibility */
 }
 
 .banner h1 {
     color: white; /* Text color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Small shadow with semi-transparency */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 4); /* Small shadow with semi-transparency */
     margin-top: 65px;
 }
 
 .banner p {
     color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); /* Slightly lighter shadow for smaller text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 4); /* Slightly lighter shadow for smaller text */
     margin-top: 65px;
 }
