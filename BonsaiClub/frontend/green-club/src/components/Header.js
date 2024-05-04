@@ -7,16 +7,14 @@ import loop from './loop.png'
 import favorite from './favorite.png'
 import profile1 from './profile.png'
 
-function Header() {
+function Header({ onProfileClick }) {
     return (
         <header className="header">
             <Link to="/" className="logo">
                 <img src={logo} alt="Plant Club" style={{ height: '50px' }} />
             </Link>
-            <div className="profile-icon">
-                <Link to="/profile">
-                    <img src={profile1} alt="" />
-                </Link>
+            <div className="profile-icon" onClick={onProfileClick}>
+                <img src={profile1} alt="Profile" />
             </div>
             <div className="favorite-icon">
                 <Link to="/favorite">
