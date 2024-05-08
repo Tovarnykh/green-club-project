@@ -1,7 +1,7 @@
 .category-icons {
     display: flex;
     justify-content: space-around;
-    padding: 89px 20px;
+    padding: 62px 20px;
     background-image: -webkit-linear-gradient(to bottom, #03281e, #04291f);
     background-image:    -moz-linear-gradient(to bottom, #03281e, #04291f);
     background-image:      -o-linear-gradient(to bottom, #03281e, #04291f);
@@ -9,10 +9,9 @@
 }
 
 .category-icon {
-    flex-basis: 20%; /* Adjust based on the number of items per row you prefer */
+    flex-basis: 20%;
     text-align: center;
-    margin: 10px; /* Provides spacing between icons */
-    margin-top: -29px;
+
 }
 
 .category-icon img {
@@ -26,6 +25,7 @@
     font-size: 14px; /* Font size */
     margin-top: 8px; /* Space between the image and the text */
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    align-content: center;
 }
 
 /* Add hover effects to the links for better user interaction */

@@ -1,5 +1,5 @@
 .banner {
-    background-image: url('./banner.png'); /* Update with the path to your image */
+    background-image: url('banner.png'); /* Update with the path to your image */
     background-size: cover; /* Covers the full area of the div without stretching */
     background-position: center; /* Centers the background image */
     height: 580px; /* Adjust based on your preference */;

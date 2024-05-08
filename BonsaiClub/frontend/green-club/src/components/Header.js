@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from './logo.png'
-import cart from './cart.png'
+import cart from '../customer/components/HomeCategoryIcons/cart.png'
 import loop from './loop.png'
 import favorite from './favorite.png'
 import profile1 from './profile.png'
