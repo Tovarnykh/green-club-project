@@ -26,10 +26,10 @@ const DeliveryAddressForm = () => {
         <div>
             <Grid container spacing={4}>
                 <Grid xs={12} lg={5} className='border rounded-e-md shadow-md h-[30.5rem] overflow-y-scroll'>
-                    <div className='py-5 py-7 border-b cursor-pointer'>
+                    <div className='py-5 py-7 border-b cursor-pointer ml-5'>
                         <AddressCard/>
                         <Button sx={{mt: 2, bgcolor: "RGB(145 85 253)"}} size='large' variant='contained'>Deliver
-                            hEre</Button>
+                            here</Button>
                     </div>
                 </Grid>
                 <Grid item xs={12} lg={7}>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddressCard = () => {
     return (
-        <div className='ml-5'>
+        <div>
             <div className='space-y-3'>
                 <p className='font-semibold'>Viktor Tovarnykh</p>
                 <p>Kiev, Darnytskiy district, 4001</p>
