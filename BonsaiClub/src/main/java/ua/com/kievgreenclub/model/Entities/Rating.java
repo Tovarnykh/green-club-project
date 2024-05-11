@@ -1,4 +1,4 @@
-package ua.com.kievgreenclub.model;
+package ua.com.kievgreenclub.model.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

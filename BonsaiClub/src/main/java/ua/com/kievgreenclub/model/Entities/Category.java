@@ -1,4 +1,4 @@
-package ua.com.kievgreenclub.model;
+package ua.com.kievgreenclub.model.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

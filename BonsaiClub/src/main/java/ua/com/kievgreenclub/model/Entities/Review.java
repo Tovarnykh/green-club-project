@@ -1,4 +1,4 @@
-package ua.com.kievgreenclub.model;
+package ua.com.kievgreenclub.model.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -75,4 +75,5 @@ public class Review {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
 }

@@ -1,4 +1,4 @@
-package ua.com.kievgreenclub.model;
+package ua.com.kievgreenclub.model.Entities;
 
 import jakarta.persistence.*;
 
@@ -31,7 +31,6 @@ public class Product {
 
     private String brand;
 
-    @Embedded
     @ElementCollection
     @Column(name = "sizes")
     private Set<Size> sizes = new HashSet<>();
