@@ -15,7 +15,7 @@ import ua.com.kievgreenclub.controller.request.LoginRequest;
 import ua.com.kievgreenclub.model.Entities.User;
 import ua.com.kievgreenclub.repository.UserRepository;
 import ua.com.kievgreenclub.service.exception.UserException;
-import ua.com.kievgreenclub.service.impl.CustomUserServiceImplementation;
+import ua.com.kievgreenclub.service.impl.CustomUserServiceImp;
 
 @RestController
 @RequestMapping("/auth")
@@ -24,11 +24,11 @@ public class AuthController {
     private UserRepository userRepository;
     private JwtProvider jwtProvider;
     private PasswordEncoder passwordEncoder;
-    private CustomUserServiceImplementation customUserServiceImplementation;
+    private CustomUserServiceImp customUserServiceImp;
 
-    public AuthController(UserRepository userRepository, CustomUserServiceImplementation customUserServiceImplementation, PasswordEncoder passwordEncoder, JwtProvider jwtProvider) {
+    public AuthController(UserRepository userRepository, CustomUserServiceImp customUserServiceImp, PasswordEncoder passwordEncoder, JwtProvider jwtProvider) {
         this.userRepository = userRepository;
-        this.customUserServiceImplementation = customUserServiceImplementation;
+        this.customUserServiceImp = customUserServiceImp;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
     }
@@ -84,7 +84,7 @@ public class AuthController {
     }
 
     private Authentication authenticate (String userName, String password){
-        UserDetails userDetails = customUserServiceImplementation.loadUserByUsername(userName);
+        UserDetails userDetails = customUserServiceImp.loadUserByUsername(userName);
 
         if(userDetails == null){
             throw new BadCredentialsException("Invalid Username");
