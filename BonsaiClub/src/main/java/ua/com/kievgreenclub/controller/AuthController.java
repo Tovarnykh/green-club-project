@@ -13,7 +13,7 @@ import ua.com.kievgreenclub.config.JwtProvider;
 import ua.com.kievgreenclub.config.response.AuthResponse;
 import ua.com.kievgreenclub.controller.request.LoginRequest;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.repository.UserRepository;
+import ua.com.kievgreenclub.model.repository.UserRepository;
 import ua.com.kievgreenclub.service.exception.UserException;
 import ua.com.kievgreenclub.service.impl.CustomUserServiceImp;
 

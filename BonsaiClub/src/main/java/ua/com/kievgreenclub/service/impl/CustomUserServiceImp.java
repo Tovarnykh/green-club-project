@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.repository.UserRepository;
+import ua.com.kievgreenclub.model.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
