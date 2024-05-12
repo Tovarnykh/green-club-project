@@ -121,6 +121,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findAllProducts() {
+        
+
+        return null;
+    }
+
+    @Override
     public Page<Product> getAllProduct(String category, List<String> sizes, Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber, Integer pageSize) {
         Pageable pageble = PageRequest.of(pageNumber, pageSize);
 
