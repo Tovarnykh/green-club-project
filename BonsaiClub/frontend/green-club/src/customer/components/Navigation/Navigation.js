@@ -10,7 +10,10 @@ import {
 import {Avatar, Button, Menu, MenuItem} from "@mui/material";
 import {deepPurple} from "@mui/material/colors";
 import {navigation} from "./navigationData";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import AuthModal from "../../auth/AuthModal";
+import {useDispatch, useSelector} from "react-redux";
+import {getUser, logout} from "../../../state/auth/Action";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -23,6 +26,9 @@ export default function Navigation() {
     const [anchorEl, setAnchorEl] = useState(null);
     const openUserMenu = Boolean(anchorEl);
     const jwt = localStorage.getItem("jwt");
+    const {auth}=useSelector(store=>store);
+    const dispatch=useDispatch();
+    const location = useLocation();
 
     const handleUserClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -42,6 +48,28 @@ export default function Navigation() {
         navigate(`/${category.id}/${section.id}/${item.id}`);
         close();
     };
+
+    useEffect(()=>{
+        if(jwt){
+            dispatch(getUser(jwt))
+        }
+    },[jwt, auth.jwt])
+
+    useEffect(()=>{
+
+        if(auth.user){
+            handleClose()
+        }
+        if(location.pathname==="/login" || location.pathname==="/register"){
+            navigate(-1)
+        }
+
+    }, [auth.user])
+
+    const handleLogout = ()=>{
+        dispatch(logout())
+        handleCloseUserMenu()
+    }
 
     return (
         <div className="bg-white pb-10">
@@ -375,7 +403,7 @@ export default function Navigation() {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    {(
+                                    {auth.user?.firstName ? (
                                         <div>
                                             <Avatar
                                                 className="text-white"
@@ -383,13 +411,15 @@ export default function Navigation() {
                                                 aria-controls={open ? "basic-menu" : undefined}
                                                 aria-haspopup="true"
                                                 aria-expanded={open ? "true" : undefined}
+                                                onClick={handleUserClick}
                                                 sx={{
                                                     bgcolor: deepPurple[500],
                                                     color: "white",
                                                     cursor: "pointer",
                                                 }}
                                             >
-                                                V
+
+                                                {auth.user?.firstName[0].toUpperCase()}
                                             </Avatar>
                                             <Menu
                                                 id="basic-menu"
@@ -400,15 +430,22 @@ export default function Navigation() {
                                                     "aria-labelledby": "basic-button",
                                                 }}
                                             >
-                                                <MenuItem>
+                                                <MenuItem onClick={handleCloseUserMenu}>
                                                     Profile
                                                 </MenuItem>
-                                                <MenuItem onClick={() => navigate("/account/order")}>
+                                                <MenuItem>
                                                     My Orders
                                                 </MenuItem>
-                                                <MenuItem>Logout</MenuItem>
+                                                <MenuItem onClick={handleLogout}>Logout</MenuItem>
                                             </Menu>
                                         </div>
+                                    ) : (
+                                        <Button
+                                            onClick={handleOpen}
+                                            className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                                        >
+                                            Signin
+                                        </Button>
                                     )}
                                 </div>
                                 <div className="flex items-center lg:ml-6">
@@ -441,6 +478,7 @@ export default function Navigation() {
                     </div>
                 </nav>
             </header>
+            <AuthModal handleClose={handleClose} open={openAuthModal}/>
         </div>
     );
 }
