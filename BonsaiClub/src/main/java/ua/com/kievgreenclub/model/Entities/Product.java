@@ -31,8 +31,10 @@ public class Product {
 
     private String brand;
 
+    private String room;
+
     @ElementCollection
-    @Column(name = "sizes")
+    @CollectionTable(name = "product_sizes", joinColumns = @JoinColumn(name = "product_id"))
     private Set<Size> sizes = new HashSet<>();
 
     @Column(name = "image_url")
@@ -56,7 +58,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String title, String description, int price, int discountedPrice, int discountedPercent, int quantity, String brand, Set<Size> sizes, String imageUrl, List<Rating> ratings, List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
+    public Product(Long id, String title, String description, int price, int discountedPrice, int discountedPercent, int quantity, String brand, String room, Set<Size> sizes, String imageUrl, List<Rating> ratings, List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -65,6 +67,7 @@ public class Product {
         this.discountedPercent = discountedPercent;
         this.quantity = quantity;
         this.brand = brand;
+        this.room = room;
         this.sizes = sizes;
         this.imageUrl = imageUrl;
         this.ratings = ratings;
@@ -72,6 +75,14 @@ public class Product {
         this.numRatings = numRatings;
         this.category = category;
         this.createdAt = createdAt;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     public Long getId() {

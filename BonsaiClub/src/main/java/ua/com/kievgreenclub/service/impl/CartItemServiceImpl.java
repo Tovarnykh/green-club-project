@@ -5,8 +5,8 @@ import ua.com.kievgreenclub.model.Entities.Cart;
 import ua.com.kievgreenclub.model.Entities.CartItem;
 import ua.com.kievgreenclub.model.Entities.Product;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.model.repository.CartItemRepository;
-import ua.com.kievgreenclub.model.repository.CartRepository;
+import ua.com.kievgreenclub.model.Entities.repository.CartItemRepository;
+import ua.com.kievgreenclub.model.Entities.repository.CartRepository;
 import ua.com.kievgreenclub.service.CartItemService;
 import ua.com.kievgreenclub.service.UserService;
 import ua.com.kievgreenclub.service.exception.CartItemException;
@@ -62,7 +62,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public void removeCartItem(Long userId, Long cartItemId) throws CartItemException, UserException {
         CartItem cartItem = findCartItemById(cartItemId);
-        User user = userService.findUserById(cartItem.getId());
+        User user = userService.findUserById(cartItem.getUserId());
 
         User reqUser = userService.findUserById(userId);
 

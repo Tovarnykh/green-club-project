@@ -24,12 +24,13 @@ public class ProductController {
                                                                       @RequestParam Integer minPrice,
                                                                       @RequestParam Integer maxPrice,
                                                                       @RequestParam Integer minDiscount,
+                                                                      @RequestParam List<String> rooms,
                                                                       @RequestParam String sort,
                                                                       @RequestParam String stock,
                                                                       @RequestParam Integer pageNumber,
                                                                       @RequestParam Integer pageSize){
         Page<Product> res = productService.getAllProduct(category, size, minPrice, maxPrice, minDiscount,
-                sort, stock, pageNumber, pageSize);
+                rooms, sort, stock, pageNumber, pageSize);
 
         System.out.println("Complete products");
         return new ResponseEntity<>(res, HttpStatus.ACCEPTED);

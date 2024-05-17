@@ -3,10 +3,7 @@ package ua.com.kievgreenclub.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.com.kievgreenclub.ApiResponse;
 import ua.com.kievgreenclub.controller.request.AddItemRequest;
 import ua.com.kievgreenclub.model.Entities.Cart;
@@ -33,8 +30,8 @@ public class CartController {
         return new ResponseEntity<Cart>(cart, HttpStatus.OK);
     }
 
-    @GetMapping("/add")
-    public ResponseEntity<ApiResponse> addItemToCart(@RequestHeader AddItemRequest req,
+    @PutMapping("/add")
+    public ResponseEntity<ApiResponse> addItemToCart(@RequestBody AddItemRequest req,
                                                      @RequestHeader("Authorization")String jwt)
             throws UserException, ProductException {
         User user = userService.findUserProfileByJwt(jwt);

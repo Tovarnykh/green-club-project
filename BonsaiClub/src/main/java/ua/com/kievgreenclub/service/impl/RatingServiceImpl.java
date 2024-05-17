@@ -5,7 +5,7 @@ import ua.com.kievgreenclub.controller.request.RatingRequest;
 import ua.com.kievgreenclub.model.Entities.Product;
 import ua.com.kievgreenclub.model.Entities.Rating;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.model.repository.RatingRepository;
+import ua.com.kievgreenclub.model.Entities.repository.RatingRepository;
 import ua.com.kievgreenclub.service.ProductService;
 import ua.com.kievgreenclub.service.RatingService;
 import ua.com.kievgreenclub.service.exception.ProductException;

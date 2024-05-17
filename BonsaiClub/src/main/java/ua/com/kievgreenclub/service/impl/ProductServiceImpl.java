@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import ua.com.kievgreenclub.controller.request.CreateProductRequest;
 import ua.com.kievgreenclub.model.Entities.Category;
 import ua.com.kievgreenclub.model.Entities.Product;
-import ua.com.kievgreenclub.model.repository.CategoryRepository;
-import ua.com.kievgreenclub.model.repository.ProductRepository;
+import ua.com.kievgreenclub.model.Entities.repository.CategoryRepository;
+import ua.com.kievgreenclub.model.Entities.repository.ProductRepository;
 import ua.com.kievgreenclub.service.ProductService;
 import ua.com.kievgreenclub.service.UserService;
 import ua.com.kievgreenclub.service.exception.ProductException;
@@ -35,55 +35,37 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product createProduct(CreateProductRequest req) {
         Category topLevel = categoryRepository.findByName(req.getTopLevelCategory());
-
-        if(topLevel==null){
-            Category topLevelCategory = new Category();
-            topLevelCategory.setName(req.getTopLevelCategory());
-            topLevelCategory.setLevel(1);
-
-            topLevel=categoryRepository.save(topLevelCategory);
+        if (topLevel == null) {
+            topLevel = new Category();
+            topLevel.setName(req.getTopLevelCategory());
+            topLevel.setLevel(1);
+            topLevel = categoryRepository.save(topLevel);
         }
 
-        Category secondLevel = categoryRepository
-                .findByNameAndParent(req.getSecondLevelCategory(), topLevel.getName());
-
-        if(secondLevel==null){
-            Category secondLevelCategory = new Category();
-            secondLevelCategory.setName(req.getSecondLevelCategory());
-            secondLevelCategory.setParentCategory(topLevel);
-            secondLevelCategory.setLevel(2);
-
-            secondLevelCategory = categoryRepository.save(secondLevel);
-        }
-
-        Category thirdLevel = categoryRepository.findByNameAndParent(req.getThirdLevelCategory(), secondLevel.getName());
-
-        if (thirdLevel==null){
-            Category thirdLevelCategory = new Category();
-            thirdLevelCategory.setName(req.getThirdLevelCategory());
-            thirdLevelCategory.setParentCategory(secondLevel);
-            thirdLevelCategory.setLevel(3);
-
-            thirdLevel = categoryRepository.save(thirdLevel);
+        Category secondLevel = categoryRepository.findByNameAndParent(req.getSecondLevelCategory(), topLevel.getName());
+        if (secondLevel == null) {
+            secondLevel = new Category();
+            secondLevel.setName(req.getSecondLevelCategory());
+            secondLevel.setParentCategory(topLevel);
+            secondLevel.setLevel(2);
+            secondLevel = categoryRepository.save(secondLevel);
         }
 
         Product product = new Product();
-
         product.setTitle(req.getTitle());
         product.setDescription(req.getDescription());
+        product.setPrice(req.getPrice());
         product.setDiscountedPrice(req.getDiscountedPrice());
         product.setDiscountedPercent(req.getGetDiscountedPresent());
         product.setImageUrl(req.getImageUrl());
+        product.setRoom(req.getRoom());
         product.setBrand(req.getBrand());
-        product.setPrice(req.getPrice());
         product.setSizes(req.getSize());
         product.setQuantity(req.getQuantity());
-        product.setCategory(thirdLevel);
+        product.setCategory(secondLevel);
         product.setCreatedAt(LocalDateTime.now());
 
-        Product savedProduct = productRepository.save(product);
-
-        return savedProduct;
+        return productRepository.save(product);
     }
 
     @Override
@@ -128,7 +110,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> getAllProduct(String category, List<String> sizes, Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber, Integer pageSize) {
+    public Page<Product> getAllProduct(String category, List<String> sizes, Integer minPrice, Integer maxPrice,
+                                       Integer minDiscount, List<String> rooms,  String sort, String stock,
+                                       Integer pageNumber, Integer pageSize) {
         Pageable pageble = PageRequest.of(pageNumber, pageSize);
 
         List<Product> products = productRepository.filterProducts(category, minPrice, maxPrice, minDiscount, sort);

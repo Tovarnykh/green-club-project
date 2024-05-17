@@ -6,7 +6,7 @@ import ua.com.kievgreenclub.model.Entities.Cart;
 import ua.com.kievgreenclub.model.Entities.CartItem;
 import ua.com.kievgreenclub.model.Entities.Product;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.model.repository.CartRepository;
+import ua.com.kievgreenclub.model.Entities.repository.CartRepository;
 import ua.com.kievgreenclub.service.CartItemService;
 import ua.com.kievgreenclub.service.CartService;
 import ua.com.kievgreenclub.service.ProductService;

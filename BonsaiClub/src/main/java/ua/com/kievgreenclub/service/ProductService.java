@@ -22,7 +22,7 @@ public interface ProductService {
     List<Product> findAllProducts();
 
     Page<Product> getAllProduct(String category, List<String> sizes, Integer minPrice,
-                                Integer maxPrice, Integer minDiscount,
+                                Integer maxPrice, Integer minDiscount, List<String> rooms,
                                 String sort, String stock, Integer pageNumber, Integer pageSize);
 
 }

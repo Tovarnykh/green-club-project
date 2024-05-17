@@ -21,7 +21,7 @@ public class CreateProductRequest {
 
     private String brand;
 
-    private String color;
+    private String room;
 
     private Set<Size> size = new HashSet<>();
 
@@ -29,7 +29,6 @@ public class CreateProductRequest {
 
     private String topLevelCategory;
     private String secondLevelCategory;
-    private String thirdLevelCategory;
 
     public String getTitle() {
         return title;
@@ -87,12 +86,12 @@ public class CreateProductRequest {
         this.brand = brand;
     }
 
-    public String getColor() {
-        return color;
+    public String getRoom() {
+        return room;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     public Set<Size> getSize() {
@@ -127,11 +126,4 @@ public class CreateProductRequest {
         this.secondLevelCategory = secondLevelCategory;
     }
 
-    public String getThirdLevelCategory() {
-        return thirdLevelCategory;
-    }
-
-    public void setThirdLevelCategory(String thirdLevelCategory) {
-        this.thirdLevelCategory = thirdLevelCategory;
-    }
 }

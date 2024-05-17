@@ -3,7 +3,7 @@ package ua.com.kievgreenclub.service.impl;
 import org.springframework.stereotype.Service;
 import ua.com.kievgreenclub.config.JwtProvider;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.model.repository.UserRepository;
+import ua.com.kievgreenclub.model.Entities.repository.UserRepository;
 import ua.com.kievgreenclub.service.UserService;
 import ua.com.kievgreenclub.service.exception.UserException;
 

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import ua.com.kievgreenclub.config.JwtProvider;
 import ua.com.kievgreenclub.config.response.AuthResponse;
 import ua.com.kievgreenclub.controller.request.LoginRequest;
+import ua.com.kievgreenclub.model.Entities.Cart;
 import ua.com.kievgreenclub.model.Entities.User;
-import ua.com.kievgreenclub.model.repository.UserRepository;
+import ua.com.kievgreenclub.model.Entities.repository.UserRepository;
+import ua.com.kievgreenclub.service.CartService;
 import ua.com.kievgreenclub.service.exception.UserException;
 import ua.com.kievgreenclub.service.impl.CustomUserServiceImp;
 
@@ -26,11 +28,14 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
     private CustomUserServiceImp customUserServiceImp;
 
-    public AuthController(UserRepository userRepository, CustomUserServiceImp customUserServiceImp, PasswordEncoder passwordEncoder, JwtProvider jwtProvider) {
+    private CartService cartService;
+
+    public AuthController(UserRepository userRepository, CustomUserServiceImp customUserServiceImp, PasswordEncoder passwordEncoder, JwtProvider jwtProvider, CartService cartService) {
         this.userRepository = userRepository;
         this.customUserServiceImp = customUserServiceImp;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
+        this.cartService = cartService;
     }
 
     @PostMapping("/signup")
@@ -54,6 +59,7 @@ public class AuthController {
         createdUser.setLastName(lastName);
 
         User savedUser = userRepository.save(createdUser);
+        Cart cart = cartService.createCart(savedUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);

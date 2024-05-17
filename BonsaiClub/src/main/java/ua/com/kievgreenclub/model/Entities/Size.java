@@ -2,7 +2,6 @@ package ua.com.kievgreenclub.model.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 
 @Embeddable
 public class Size {
