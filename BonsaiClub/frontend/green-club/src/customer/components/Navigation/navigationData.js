@@ -19,7 +19,7 @@ export const navigation = {
             ],
             sections: [
                 {
-                    id: 'plantFamily',
+                    id: 'plant',
                     name: 'By Plant Family',
                     items: [
                         { name: 'Alacosia', id: 'alacosia' },
@@ -72,7 +72,7 @@ export const navigation = {
             ],
             sections: [
                 {
-                    id: 'plantFamily',
+                    id: 'plant',
                     name: 'By Plant Family',
                     items: [
                         { name: 'Alacosia', id: 'alacosia' },

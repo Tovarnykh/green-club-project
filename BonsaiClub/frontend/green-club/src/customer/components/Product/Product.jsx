@@ -1,13 +1,14 @@
-import {Fragment, useState} from 'react'
+import {Fragment, useEffect, useState} from 'react'
 import {Dialog, Disclosure, Menu, Transition} from '@headlessui/react'
 import {XMarkIcon} from '@heroicons/react/24/outline'
 import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon} from '@heroicons/react/20/solid'
 import ProductCard from "./ProductCard";
-import {hoya_plants} from "../../Data/hoya_plants";
 import {filters, singleFilter} from "./FilterData";
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
-import {createSearchParams, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {findProducts} from "../../../state/product/Action";
 
 const sortOptions = [
     {name: 'Price: Low to High', href: '#', current: false},
@@ -22,6 +23,19 @@ export default function Product() {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     const location = useLocation()
     const navigate = useNavigate();
+    const param = useParams();
+    const dispatch= useDispatch();
+    const {product} = useSelector(store=>store)
+
+    const decodedQuerryString = decodeURIComponent(location.search);
+    const searchParamms = new URLSearchParams(decodedQuerryString);
+    const roomValue = searchParamms.get("room");
+    const sizeValue = searchParamms.get("size");
+    const priceValue = searchParamms.get("price");
+    const discount = searchParamms.get("discount");
+    const sortValue = searchParamms.get("sort");
+    const pageNumber = searchParamms.get("page") || 1;
+    const stock = searchParamms.get("stock");
 
     const handleFilter = (value, sectionId) => {
         const searchParamms = new URLSearchParams(location.search)
@@ -48,6 +62,32 @@ export default function Product() {
         const query = searchParamms.toString();
         navigate({search: query})
     }
+
+    useEffect(()=>{
+    const [minPrice, maxPrice] = priceValue === null?[0,10000]:priceValue.split("-").map(Number);
+    const data = {
+        category:param.levelTwo,
+        rooms:roomValue || [],
+        sizes: sizeValue | [],
+        minPrice,
+        maxPrice,
+        minDiscount:discount || 0,
+        sort:sortValue || "price_low",
+        pageNumber: pageNumber - 1,
+        pageSize: 10,
+        stock:stock
+    }
+
+        dispatch(findProducts(data))
+
+    }, [param.levelTwo,
+        roomValue,
+    sizeValue,
+    priceValue,
+    discount,
+    sortValue,
+    pageNumber,
+    stock])
 
     return (
         <div className="bg-white">
@@ -323,7 +363,7 @@ export default function Product() {
                             <div className="lg:col-span-4 w-full">
 
                                 <div className='flex flex-wrap justify-center bg-white py-5'>
-                                    {hoya_plants.map((item) => <ProductCard product={item}/>)}
+                                    {product.products && product.products?.content?.map((item) => <ProductCard product={item}/>)}
                                 </div>
 
                             </div>

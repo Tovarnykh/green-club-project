@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Grid, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {getUser, login} from "../../state/auth/Action";
+import {login} from "../../state/auth/Action";
 
 const LoginForm = () => {
     const dispatch=useDispatch();

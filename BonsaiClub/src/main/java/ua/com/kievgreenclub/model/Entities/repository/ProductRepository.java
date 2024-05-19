@@ -10,7 +10,9 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT p FROM Product p " +
-            "WHERE (p.category.name = :category OR :category = '') " +
+            "JOIN p.category c " +
+            "LEFT JOIN c.parentCategory pc " +
+            "WHERE (:category = '' OR c.name = :category OR pc.name = :category) " +
             "AND ((:minPrice IS NULL AND :maxPrice IS NULL) OR (p.discountedPrice BETWEEN :minPrice AND :maxPrice)) " +
             "AND (:minDiscount IS NULL OR p.discountedPercent >= :minDiscount) " +
             "ORDER BY CASE WHEN :sort = 'price_low' THEN p.discountedPrice END ASC, " +
