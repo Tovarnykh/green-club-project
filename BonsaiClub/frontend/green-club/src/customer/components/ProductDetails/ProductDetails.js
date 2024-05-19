@@ -284,11 +284,11 @@ export default function ProductDetails() {
                                 </div>
                             </Grid>
                             <Grid item xs={5}>
-                                <h1 className="text-x1 font-semibold pb-2">Product Ratings</h1>
+                                <h1 className="text-x1 font-semibold pb-2">Відгуки на продукт</h1>
 
                                 <div className="flex items-center space-x-3">
                                     <Rating value={4.6} precision={.5} readOnly/>
-                                    <p className="opacity-60">56980 Ratings</p>
+                                    <p className="opacity-60">3 Відгуків</p>
                                 </div>
 
                                 <Box className="mt-5 space-y-3">
@@ -298,7 +298,7 @@ export default function ProductDetails() {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
-                                                            variant="determinate" value={40} color="success"/>
+                                                            variant="determinate" value={95} color="success"/>
                                         </Grid>
                                     </Grid>
 
@@ -308,7 +308,7 @@ export default function ProductDetails() {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
-                                                            variant="determinate" value={30} color="success"/>
+                                                            variant="determinate" value={0} color="success"/>
                                         </Grid>
                                     </Grid>
 
@@ -319,7 +319,7 @@ export default function ProductDetails() {
                                         <Grid item xs={7}>
                                             <LinearProgress
                                                 sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7, color: "yellow"}}
-                                                variant="determinate" value={25}/>
+                                                variant="determinate" value={0}/>
                                         </Grid>
                                     </Grid>
 
@@ -329,7 +329,7 @@ export default function ProductDetails() {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
-                                                            variant="determinate" value={20} color="warning"/>
+                                                            variant="determinate" value={0} color="warning"/>
                                         </Grid>
                                     </Grid>
 
@@ -339,7 +339,7 @@ export default function ProductDetails() {
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
-                                                            variant="determinate" value={10} color="error"/>
+                                                            variant="determinate" value={0} color="error"/>
                                         </Grid>
                                     </Grid>
                                 </Box>

@@ -7,7 +7,7 @@ const ProductReviewCard = () => {
             <Grid container spacing={2} gap={3}>
                 <Grid item xs={1}>
                     <Box>
-                        <Avatar className='text-white' sx={{width:56, height:56, bgcolor: "#9155fd"}}>R</Avatar>
+                        <Avatar className='text-white' sx={{width:56, height:56, bgcolor: "#9155fd"}}>V</Avatar>
                     </Box>
                 </Grid>
 
@@ -15,7 +15,7 @@ const ProductReviewCard = () => {
                     <div className='space-y-2'>
                         <div>
                             <p className='font-semibold text-lg'>Viktor</p>
-                            <p className='opacity-70'>April 5, 2024</p>
+                            <p className='opacity-70'>Квітень 5, 2024</p>
                         </div>
                     </div>
                     <Rating value={4.5} name='half-rating' readOnly precision={.5}/>
