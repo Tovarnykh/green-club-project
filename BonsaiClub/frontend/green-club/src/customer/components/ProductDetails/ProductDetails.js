@@ -1,19 +1,21 @@
-import {useState} from 'react'
-import {StarIcon} from '@heroicons/react/20/solid'
+import {useEffect, useState} from 'react'
 import {RadioGroup} from '@headlessui/react'
 import {Box, Button, Grid, LinearProgress, Rating} from "@mui/material";
 import ProductReviewCard from "./ProductReviewCard";
 import {hoya_plants} from "../../Data/hoya_plants";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {findProductsById} from "../../../state/product/Action";
+import {addItemToCart} from "../../../state/cart/Action";
 
 const product = {
-    name: 'Basic Tee 6-Pack',
+    name: 'Композиція',
     price: '$192',
     href: '#',
     breadcrumbs: [
-        {id: 1, name: 'Men', href: '#'},
-        {id: 2, name: 'Clothing', href: '#'},
+        {id: 1, name: 'Рослини', href: '#'},
+        {id: 2, name: 'Хатні', href: '#'},
     ],
     images: [
         {
@@ -47,13 +49,13 @@ const product = {
     description:
         'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
     highlights: [
-        'Hand cut and sewn locally',
-        'Dyed with our proprietary colors',
-        'Pre-washed & pre-shrunk',
-        'Ultra-soft 100% cotton',
+        'Повернення грошей за пошкоджені рослини',
+        'Тількі найлібші взірці',
+        'Горшок у подарунок',
+        'Інструкція за доглядом у комплекті',
     ],
     details:
-        'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
+        'У комплекті йде сама рослина, місце для зберігання, інструкція за доглядом. Підпишиться на наші послуги і отримайте першим нові інтересні надходження рослин.',
 }
 const reviews = {href: '#', average: 4, totalCount: 117}
 
@@ -62,13 +64,24 @@ function classNames(...classes) {
 }
 
 export default function ProductDetails() {
-    const [selectedColor, setSelectedColor] = useState(product.colors[0])
-    const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+    const [selectedSize, setSelectedSize] = useState("")
     const navigate=useNavigate();
+    const params = useParams()
+    const dispatch = useDispatch();
+    const {products} = useSelector(store=>store);
+
+    console.log("----- ", params.productId)
 
     const handleAddToCart=()=>{
+        const data = {productId:params.productId, size:selectedSize.name}
+        dispatch(addItemToCart(data))
         navigate("/cart")
     }
+
+    useEffect(()=>{
+        const data = {productId:params.productId}
+        dispatch(findProductsById(data))
+    }, [params.productId])
 
     return (
         <div className="bg-white lg:px-20">
@@ -109,20 +122,13 @@ export default function ProductDetails() {
                     <div className="flex flex-col items-center">
                         <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem]">
                             <img
-                                src={product.images[0].src}
+                                src={products.product?.imageUrl}
                                 alt={product.images[0].alt}
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>
                         <div className="flex flex-wrap space-x-5 justify-center">
-                            {product.images.map((item) => <div
-                                className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4">
-                                <img
-                                    src={item.src}
-                                    alt={item.alt}
-                                    className="h-full w-full object-cover object-center"
-                                />
-                            </div>)}
+
                         </div>
                     </div>
 
@@ -130,26 +136,26 @@ export default function ProductDetails() {
                     <div
                         className="lg:col-span-1 maxt-auto max-w-2x1 px-4 pb-16 sm:px-6 lg:max-w-7x1 lg:px-8 lg:pb-24">
                         <div className="lg:col-span-2 ">
-                            <h1 className="text-lg lg:text-x1 font-semibold text-gray-900">Majestic Man</h1>
+                            <h1 className="text-lg lg:text-x1 font-semibold text-gray-900">{products.product?.brand}</h1>
                             <h1 className='text-lg lg:text-x1 text-gray-900 opacity-60 pt-1'>
-                                Men Printed Pure Cotton Straight Kurta
+                                {products.product?.title}
                             </h1>
                         </div>
 
                         {/* Options */}
                         <div className="mt-4 lg:row-span-3 lg:mt-0">
-                            <h2 className="sr-only">Product information</h2>
+                            <h2 className="sr-only">Інформація про Рослину</h2>
 
                             <div className='flex space-x-5 items-center text-lg lg:text-x1 text-gray-900 mt-6'>
 
                                 <p className='font-semibold'>
-                                    ₴1499
+                                    ₴{products.product?.discountedPrice}
                                 </p>
                                 <p className='opacity-50 line-through'>
-                                    ₴499
+                                    ₴{products.product?.price}
                                 </p>
                                 <p className='text-green-600 font-semibold'>
-                                    66% OFF
+                                    {products.product?.discountedPercent}%
                                 </p>
 
                             </div>
@@ -158,9 +164,9 @@ export default function ProductDetails() {
                             <div className="mt-6">
                                 <div className="flex items-center space-x-3">
                                     <Rating name="read-only" value={5.5} readOnly/>
-                                    <p className='opacity-50 text-sm'>56540 Ratings</p>
+                                    <p className='opacity-50 text-sm'>56540 Відгуків</p>
                                     <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500'>3870
-                                        Reviews</p>
+                                        Відгуків</p>
                                 </div>
                             </div>
 
@@ -226,7 +232,7 @@ export default function ProductDetails() {
                                 </div>
 
                                 <Button onClick={handleAddToCart} variant="contained" sx={{px: "2rem", py: "1rem", bgcolor: "#9155fd"}}>
-                                    Add To Cart
+                                    Додати у кошик
                                 </Button>
                             </form>
                         </div>
@@ -238,7 +244,7 @@ export default function ProductDetails() {
                                 <h3 className="sr-only">Description</h3>
 
                                 <div className="space-y-6">
-                                    <p className="text-base text-gray-900">{product.description}</p>
+                                    <p className="text-base text-gray-900">{products.product?.description}</p>
                                 </div>
                             </div>
 

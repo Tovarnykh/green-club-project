@@ -3,25 +3,30 @@ import {Grid, TextField} from "@mui/material";
 import AddressCard from "../AddressCard/AddressCard";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import {useDispatch} from "react-redux";
+import {createOrder} from "../../../state/order/Action";
+import {useNavigate} from "react-router-dom";
 
 const DeliveryAddressForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         const data = new FormData(e.currentTarget)
-        const address={
-            firstName:data.get("firstName"),
-            lastName:data.get("lastName"),
-            address:data.get("address"),
-            city:data.get("city"),
-            state:data.get("state"),
-            postalCode:data.get("postalCode"),
-            phone:data.get("phone"),
+        const address = {
+            firstName: data.get("firstName"),
+            lastName: data.get("lastName"),
+            address: data.get("address"),
+            city: data.get("city"),
+            state: data.get("state"),
+            postalCode: data.get("postalCode"),
+            phone: data.get("phone"),
         }
-
-        console.log("adress:", address)
+        const orderData = {address, navigate}
+        dispatch(createOrder(orderData))
+        console.log("address:", address)
     }
-
     return (
         <div>
             <Grid container spacing={4}>
@@ -65,7 +70,8 @@ const DeliveryAddressForm = () => {
                                                autoComplete="phone number"/>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Button sx={{py:1.5,mt: 2, bgcolor: "RGB(145 85 253)"}} size='large' variant='contained' type="submit">Deliver
+                                    <Button sx={{py: 1.5, mt: 2, bgcolor: "RGB(145 85 253)"}} size='large'
+                                            variant='contained' type="submit">Deliver
                                         here</Button>
                                 </Grid>
                             </Grid>
@@ -77,5 +83,4 @@ const DeliveryAddressForm = () => {
         </div>
     );
 };
-
 export default DeliveryAddressForm;

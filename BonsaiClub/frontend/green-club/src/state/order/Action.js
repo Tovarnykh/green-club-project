@@ -1,6 +1,12 @@
-import {CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS} from "../product/ActionType";
 import {api, API_BASE_URL} from "../../config/apiConfig";
-import {GET_ORDER_BY_ID_FAILURE, GET_ORDER_BY_ID_REQUEST, GET_ORDER_BY_ID_SUCCESS} from "./ActionType";
+import {
+    CREATE_ORDER_FAILURE,
+    CREATE_ORDER_REQUEST,
+    CREATE_ORDER_SUCCESS,
+    GET_ORDER_BY_ID_FAILURE,
+    GET_ORDER_BY_ID_REQUEST,
+    GET_ORDER_BY_ID_SUCCESS
+} from "./ActionType";
 
 export const createOrder = (reqData) => async (dispatch) => {
     console.log("req data", reqData);

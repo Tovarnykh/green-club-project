@@ -8,6 +8,7 @@ import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import Pagination from '@mui/material/Pagination';
 import {findProducts} from "../../../state/product/Action";
 
 const sortOptions = [
@@ -24,8 +25,8 @@ export default function Product() {
     const location = useLocation()
     const navigate = useNavigate();
     const param = useParams();
-    const dispatch= useDispatch();
-    const {product} = useSelector(store=>store)
+    const dispatch = useDispatch();
+    const {products} = useSelector(store => store)
 
     const decodedQuerryString = decodeURIComponent(location.search);
     const searchParamms = new URLSearchParams(decodedQuerryString);
@@ -63,31 +64,38 @@ export default function Product() {
         navigate({search: query})
     }
 
-    useEffect(()=>{
-    const [minPrice, maxPrice] = priceValue === null?[0,10000]:priceValue.split("-").map(Number);
-    const data = {
-        category:param.levelTwo,
-        rooms:roomValue || [],
-        sizes: sizeValue | [],
-        minPrice,
-        maxPrice,
-        minDiscount:discount || 0,
-        sort:sortValue || "price_low",
-        pageNumber: pageNumber - 1,
-        pageSize: 10,
-        stock:stock
+    const handlePaginationChange=(event, value)=>{
+        const searchParamms = new URLSearchParams(location.search)
+        searchParamms.set("page", value);
+        const query = searchParamms.toString()
+        navigate({search:"?"+query})
     }
 
+    useEffect(() => {
+        const [minPrice, maxPrice] = priceValue === null ? [0, 10000] : priceValue.split("-").map(Number);
+        const data = {
+            category: param.levelTwo,
+            rooms: roomValue || [],
+            sizes: sizeValue | [],
+            minPrice,
+            maxPrice,
+            minDiscount: discount || 0,
+            sort: sortValue || "price_low",
+            pageNumber: pageNumber - 1,
+            pageSize: 1,
+            stock: stock
+        }
         dispatch(findProducts(data))
 
-    }, [param.levelTwo,
+    }, [
+        param.levelTwo,
         roomValue,
-    sizeValue,
-    priceValue,
-    discount,
-    sortValue,
-    pageNumber,
-    stock])
+        sizeValue,
+        priceValue,
+        discount,
+        sortValue,
+        pageNumber,
+        stock])
 
     return (
         <div className="bg-white">
@@ -159,15 +167,15 @@ export default function Product() {
                                                                     <div key={option.value}
                                                                          className="flex items-center">
                                                                         <input
-                                                                            id={`filter-mobile-${section.id}-${optionIdx}`}
-                                                                            name={`${section.id}[]`}
+                                                                            id={"filter-mobile-" + section.id + "-" + optionIdx}
+                                                                            name={section.id + "[]"}
                                                                             defaultValue={option.value}
                                                                             type="checkbox"
                                                                             defaultChecked={option.checked}
                                                                             className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                                                         />
                                                                         <label
-                                                                            htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                                                                            htmlFor={"filter-mobile-" + section.id + "-" + optionIdx}
                                                                             className="ml-3 min-w-0 flex-1 text-gray-500"
                                                                         >
                                                                             {option.label}
@@ -289,15 +297,15 @@ export default function Product() {
                                                                 <div key={option.value} className="flex items-center">
                                                                     <input
                                                                         onChange={() => handleFilter(option.value, section.id)}
-                                                                        id={`filter-${section.id}-${optionIdx}`}
-                                                                        name={`${section.id}[]`}
+                                                                        id={"filter-" + section.id + "-" + optionIdx}
+                                                                        name={section.id + "[]"}
                                                                         defaultValue={option.value}
                                                                         type="checkbox"
                                                                         defaultChecked={option.checked}
                                                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                                                     />
                                                                     <label
-                                                                        htmlFor={`filter-${section.id}-${optionIdx}`}
+                                                                        htmlFor={"filter-" + section.id + "-" + optionIdx}
                                                                         className="ml-3 text-sm text-gray-600"
                                                                     >
                                                                         {option.label}
@@ -363,12 +371,20 @@ export default function Product() {
                             <div className="lg:col-span-4 w-full">
 
                                 <div className='flex flex-wrap justify-center bg-white py-5'>
-                                    {product.products && product.products?.content?.map((item) => <ProductCard product={item}/>)}
+                                    {products.products && products.products?.content?.map((item) => <ProductCard
+                                        product={item}/>)}
                                 </div>
 
                             </div>
                         </div>
                     </section>
+
+                    <section className="w-full px=[3.6rem]">
+                        <div className="px-4 py-5 flex justify-center">
+                            <Pagination count={products.products?.totalPages} color="secondary" onChange={handlePaginationChange}/>
+                        </div>
+                    </section>
+
                 </main>
             </div>
         </div>
