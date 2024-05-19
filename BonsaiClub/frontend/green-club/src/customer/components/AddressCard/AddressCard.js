@@ -8,7 +8,7 @@ const AddressCard = ({address}) => {
                 <p>{address?.state}, {address?.city} , {address?.streetAddress}, {address?.zipCode}</p>
                 <div className='space-y-1'>
                     <p className='fonts-semibold'>Phone Number</p>
-                    <p>{address.mobile}</p>
+                    <p>{address?.mobile}</p>
                 </div>
             </div>
         </div>

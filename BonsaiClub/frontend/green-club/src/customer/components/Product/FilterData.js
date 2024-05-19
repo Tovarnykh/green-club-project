@@ -10,7 +10,7 @@ export const room = [
 export const filters = [
     {
         id: "room",
-        name: "Room",
+        name: "Кімнати",
         options: [
             {value: "bathroom", label: "Bathroom"},
             {value: "bedroom", label: "Bedroom"},
@@ -23,7 +23,7 @@ export const filters = [
 
     {
         id: "size",
-        name: "Size",
+        name: "Розмір",
         options: [
             {value: "S", label: "S"},
             {value: "M", label: "M"},
@@ -36,7 +36,7 @@ export const filters = [
 export const singleFilter = [
     {
         id: "price",
-        name: "Price",
+        name: "Ціна",
         options: [
             {value: "159-399", label: "₴159 To ₴399"},
             {value: "399-999", label: "₴399 To ₴999"},
@@ -47,7 +47,7 @@ export const singleFilter = [
     },
     {
         id: "discount",
-        name: "DISCOUNT RANGE",
+        name: "Акції",
         options: [
             {value: "10", label: "10% And Above"},
             {value: "20", label: "20% And Above"},
@@ -61,7 +61,7 @@ export const singleFilter = [
     },
     {
         id: "stock",
-        name: "Availability",
+        name: "За статусом",
         options: [
             {value: "in_stock", label: "In Stock"},
             {value: "out_of_stock", label: "Out Of Stock"}
@@ -70,6 +70,6 @@ export const singleFilter = [
 ]
 
 export const sortOptions = [
-    {name: "Price: Low to High", query: "price_low", current: false},
-    {name: "Price: High to Low", query: "price_high", current: false}
+    {name: "Ціни: Низькі до Високих", query: "price_low", current: false},
+    {name: "Ціни: Високі до низьких", query: "price_high", current: false}
 ];

@@ -164,9 +164,8 @@ export default function ProductDetails() {
                             <div className="mt-6">
                                 <div className="flex items-center space-x-3">
                                     <Rating name="read-only" value={5.5} readOnly/>
-                                    <p className='opacity-50 text-sm'>56540 Відгуків</p>
-                                    <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500'>3870
-                                        Відгуків</p>
+                                    <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500'>3
+                                        Відгуки</p>
                                 </div>
                             </div>
 
@@ -295,7 +294,7 @@ export default function ProductDetails() {
                                 <Box className="mt-5 space-y-3">
                                     <Grid container alignItems="center" gap={2}>
                                         <Grid item xs={2}>
-                                            <p>Excellent</p>
+                                            <p>Чудово</p>
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
@@ -305,7 +304,7 @@ export default function ProductDetails() {
 
                                     <Grid container alignItems="center" gap={2}>
                                         <Grid item xs={2}>
-                                            <p>Very Good</p>
+                                            <p>Дуже добре</p>
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
@@ -315,7 +314,7 @@ export default function ProductDetails() {
 
                                     <Grid container alignItems="center" gap={2}>
                                         <Grid item xs={2}>
-                                            <p>Good</p>
+                                            <p>Добре</p>
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress
@@ -326,7 +325,7 @@ export default function ProductDetails() {
 
                                     <Grid container alignItems="center" gap={2}>
                                         <Grid item xs={2}>
-                                            <p>Avarage</p>
+                                            <p>Нормально</p>
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}
@@ -336,7 +335,7 @@ export default function ProductDetails() {
 
                                     <Grid container alignItems="center" gap={2}>
                                         <Grid item xs={2}>
-                                            <p>Poor</p>
+                                            <p>Ніяк</p>
                                         </Grid>
                                         <Grid item xs={7}>
                                             <LinearProgress sx={{bgcolor: "#d0d0d0", borderRadius: 4, height: 7}}

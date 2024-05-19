@@ -2,25 +2,25 @@ export const navigation = {
     categories: [
         {
             id: 'houseplants',
-            name: 'Houseplants',
+            name: 'Хатні рослини',
             featured: [
                 {
-                    name: 'New Arrivals',
-                    href: '/',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+                    name: 'Нові надходження',
+                    href: '/product/204',
+                    imageSrc: 'https://plnts.com/_next/image?url=https%3A%2F%2Fwebshop.plnts.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Faa5d334f459227518b6c3cf7ea9d29ed%2Fp%2Fl%2Fpl.m.084-thumbnail.jpg&w=640&q=80',
                     imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
                 },
                 {
-                    name: 'Basic Tees',
-                    href: '/',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
+                    name: 'Хіт сезону',
+                    href: '/product/202',
+                    imageSrc: 'https://plnts.com/_next/image?url=https%3A%2F%2Fwebshop.plnts.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Faa5d334f459227518b6c3cf7ea9d29ed%2Fp%2Fl%2Fpl.m.138-thumbnail.jpg&w=640&q=80',
                     imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
                 },
             ],
             sections: [
                 {
                     id: 'plant',
-                    name: 'By Plant Family',
+                    name: 'Сімейство рослин',
                     items: [
                         { name: 'Alacosia', id: 'alacosia' },
                         { name: 'Philodendron', id: 'philodendron' },
@@ -32,82 +32,25 @@ export const navigation = {
                 },
                 {
                     id: 'placement',
-                    name: 'By Placement Area',
+                    name: 'Місце расташування',
                     items: [
-                        { name: 'Bathroom plants', id: 'bathroom' },
-                        { name: 'Bedroom plants', id: 'bedroom' },
-                        { name: 'Livingroom plants', id: 'livingroom' },
-                        { name: 'Office plants', id: 'office' },
-                        { name: 'Kitchen plants', id: 'kitchen' },
+                        { name: 'Рослини до ванни', id: 'bathroom' },
+                        { name: 'Рослини для спалень', id: 'bedroom' },
+                        { name: 'Рослини для вітален', id: 'livingroom' },
+                        { name: 'Рослини у офіс', id: 'office' },
+                        { name: 'Рослини для кухонь', id: 'kitchen' },
                     ],
                 },
                 {
                     id: 'size',
-                    name: 'By Size',
+                    name: 'Розміри',
                     items: [
-                        { name: 'Baby houseplants (S)', id: 'baby' },
-                        { name: 'Medium houseplants (M, L)', id: 'medium' },
-                        { name: 'Large houseplants (XL, XXL)', id: 'large' },
+                        { name: 'Дітячі рослини (S)', id: 'baby' },
+                        { name: 'Звичайні рослини (M, L)', id: 'medium' },
+                        { name: 'Великі рослини (XL, XXL)', id: 'large' },
                     ],
                 },
             ],
         },
-        {
-            id: 'accessories',
-            name: 'Accessories',
-            featured: [
-                {
-                    name: 'New Arrivals',
-                    id: '#',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-                    imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-                },
-                {
-                    name: 'Artwork Tees',
-                    id: '#',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-                    imageAlt:
-                        'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-                },
-            ],
-            sections: [
-                {
-                    id: 'plant',
-                    name: 'By Plant Family',
-                    items: [
-                        { name: 'Alacosia', id: 'alacosia' },
-                        { name: 'Philodendron', id: 'philodendron' },
-                        { name: 'Monstera', id: 'monstera' },
-                        { name: 'Anthurium', id: 'anthurium' },
-                        { name: 'Hoya', id: 'hoya' },
-                        { name: 'Syngonium', id: 'syngonium' }
-                    ],
-                },
-                {
-                    id: 'placement',
-                    name: 'By Placement Area',
-                    items: [
-                        { name: 'Bathroom plants', id: 'bathroom' },
-                        { name: 'Bedroom plants', id: 'bedroom' },
-                        { name: 'Livingroom plants', id: 'livingroom' },
-                        { name: 'Office plants', id: 'office' },
-                        { name: 'Kitchen plants', id: 'kitchen' },
-                    ],
-                },
-                {
-                    id: 'size',
-                    name: 'By Size',
-                    items: [
-                        { name: 'Baby houseplants (S)', id: 'baby' },
-                        { name: 'Medium houseplants (M, L)', id: 'medium' },
-                        { name: 'Large houseplants (XL, XXL)', id: 'large' },
-                    ],
-                },
-            ],
-        },
-    ],
-    pages: [
-        { name: 'Company', id: '/' },
-        { name: 'Stores', id: '/' },
     ],
 }

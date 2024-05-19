@@ -9,68 +9,28 @@ const Footer = () => {
                   container
                   sx={{bgcolor: "black", color: "white", py: 3}}>
 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={7}>
 
-                    <Typography className='pb-5' variant='h6'> Company </Typography>
+                    <Typography className='pb-5' variant='h6'> О Компанії </Typography>
                     <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> About </Button>
+                        <Button className='pb-5' variant='h6' gutterBottom> Контакти </Button>
                     </div>
                     <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Blog </Button>
+                        <Button className='pb-5' variant='h6' gutterBottom> Робочі місця </Button>
                     </div>
                     <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Press </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Jobs </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Partners </Button>
+                        <Button className='pb-5' variant='h6' gutterBottom> Партнери </Button>
                     </div>
 
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
 
-                    <Typography className='pb-5' variant='h6'> Solutions </Typography>
+                    <Typography className='pb-5' variant='h6'> Документація по проекту </Typography>
                     <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Marketing </Button>
+                        <Button className='pb-5' variant='h6' gutterBottom> Інструкція </Button>
                     </div>
                     <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Analytics </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Commerce </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Insights </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Support </Button>
-                    </div>
-
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-
-                    <Typography className='pb-5' variant='h6'> Documentation </Typography>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Guides </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> API Status </Button>
-                    </div>
-
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-
-                    <Typography className='pb-5' variant='h6'> Legal </Typography>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Claim </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Privacy </Button>
-                    </div>
-                    <div>
-                        <Button className='pb-5' variant='h6' gutterBottom> Terms </Button>
+                        <Button className='pb-5' variant='h6' gutterBottom> API документація </Button>
                     </div>
 
                 </Grid>

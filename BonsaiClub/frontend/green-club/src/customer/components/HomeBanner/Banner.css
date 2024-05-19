@@ -2,7 +2,7 @@
     background-image: url('banner.png'); /* Update with the path to your image */
     background-size: cover; /* Covers the full area of the div without stretching */
     background-position: center; /* Centers the background image */
-    height: 580px; /* Adjust based on your preference */;
+    height: 700px; /* Adjust based on your preference */;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,11 +13,11 @@
 .banner h1 {
     color: white; /* Text color */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 4); /* Small shadow with semi-transparency */
-    margin-top: 65px;
+    margin-top: 365px;
 }
 
 .banner p {
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 4); /* Slightly lighter shadow for smaller text */
-    margin-top: 65px;
+    margin-top: 400px;
 }
